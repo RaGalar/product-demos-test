@@ -1,6 +1,6 @@
 ---
 - name: Uninstall Insights
-  hosts: "{{ _hosts | default(omit) }}"
+  hosts: "{{ hosts | default(omit) }}"
   become: true
 
   tasks:
@@ -10,9 +10,9 @@
         state: absent
 
 - name: Register to Satellite
-  hosts: "{{ _hosts | default(omit) }}"
+  hosts: "{{ hosts | default(omit) }}"
   become: true
 
   tasks:
-    - name: Test command
-      command: 'echo hello'
+    - name: Execute cURL
+      command: cat /etc/motd
