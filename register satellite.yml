@@ -14,5 +14,5 @@
   become: true
 
   tasks:
-    - name: Unregister from Customer Portal
-    - command: 'echo hello'
+    - name: Test command
+      command: 'echo hello'
