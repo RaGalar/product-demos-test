@@ -15,10 +15,4 @@
 
   tasks:
     - name: Unregister from Customer Portal
-      redhat_suscription:
-        state: absent
-    - name: Register to Satellite
-      redhat_suscription:
-        activationkey: "{{ org_activationkey }}"
-        org_id: "CLAROVTR"
-        state: present
+    - command: 'echo hello'
