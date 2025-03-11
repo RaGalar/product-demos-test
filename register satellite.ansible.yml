@@ -1,0 +1,24 @@
+---
+- name: Uninstall Insights
+  hosts: "{{ _hosts | default(omit) }}"
+  become: true
+
+  tasks:
+    - name: Remove Insights
+      ansible.builtin.yum:
+        name: insights-client
+        state: absent
+
+- name: Register to Satellite
+  hosts: "{{ _hosts | default(omit) }}"
+  become: true
+
+  tasks:
+    - name: Unregister from Customer Portal
+      redhat_suscription:
+        state: absent
+    - name: Register to Satellite
+      redhat_suscription:
+        activationkey: "{{ org_activationkey }}"
+        org_id: "CLAROVTR"
+        state: present
